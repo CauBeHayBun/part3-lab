@@ -1,0 +1,50 @@
+<h2>
+    <%= title %>
+</h2>
+<a href="/products/new" class="btn btn-primary mb-2">Thêm sản phẩm</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Tên</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Nhà cung cấp</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (products && products.length) { %>
+            <% products.forEach((p, idx) => { %>
+                <tr>
+                    <td>
+                        <%= idx + 1 %>
+                    </td>
+                    <td>
+                        <%= p.name %>
+                    </td>
+                    <td>
+                        <%= p.price %>
+                    </td>
+                    <td>
+                        <%= p.quantity %>
+                    </td>
+                    <td>
+                        <%= p.supplier ? p.supplier.name : 'N/A' %>
+                    </td>
+                    <td>
+                        <a href="/products/<%= p._id %>/edit" class="btn btn-sm btn-warning">Sửa</a>
+                        <form action="/products/<%= p._id %>/delete" method="post" style="display:inline">
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Xác nhận xóa?')">Xóa</button>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="6">Không có sản phẩm</td>
+                        </tr>
+                        <% } %>
+    </tbody>
+</table>

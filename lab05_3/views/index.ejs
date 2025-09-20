@@ -1,0 +1,30 @@
+<h1>
+    <%= title %>
+</h1>
+
+<div class="row">
+    <% if (products && products.length) { %>
+        <% products.forEach(p => { %>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= p.name %>
+                        </h5>
+                        <p class="card-text">Giá:
+                            <%= p.price %>
+                        </p>
+                        <p class="card-text">Số lượng:
+                            <%= p.quantity %>
+                        </p>
+                        <p class="card-text">Nhà cung cấp:
+                            <%= p.supplier ? p.supplier.name : 'N/A' %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+                <% } else { %>
+                    <p>Chưa có sản phẩm nào.</p>
+                    <% } %>
+</div>

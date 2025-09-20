@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Shop MVC</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <% if (suppliers && suppliers.length) { %>
+                    <% suppliers.forEach(s => { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/products/supplier/<%= s._id %>">
+                                <%= s.name %>
+                            </a>
+                        </li>
+                        <% }) %>
+                            <% } %>
+            </ul>
+
+            <form class="d-flex" action="/products/search" method="get">
+                <input class="form-control me-2" name="q" type="search" placeholder="Tìm sản phẩm..." aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Tìm</button>
+            </form>
+
+            <ul class="navbar-nav ms-auto">
+                <% if (!user) { %>
+                    <li class="nav-item"><a class="nav-link" href="/auth/login">Đăng nhập</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/auth/register">Đăng ký</a></li>
+                    <% } else { %>
+                        <li class="nav-item"><span class="nav-link">Xin chào, <%= user.username %></span></li>
+                        <li class="nav-item"><a class="nav-link" href="/suppliers">Quản lý nhà cung cấp</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/products">Quản lý sản phẩm</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/auth/logout">Thoát</a></li>
+                        <% } %>
+            </ul>
+        </div>
+    </div>
+</nav>

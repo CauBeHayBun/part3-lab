@@ -1,0 +1,13 @@
+<h2>
+    <%= title %>
+</h2>
+
+<p>Nếu bạn quên mật khẩu, hãy nhập email để đặt lại (chức năng đơn giản chỉ hiển thị message):</p>
+
+<form action="/auth/forgot" method="post">
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Gửi</button>
+</form>

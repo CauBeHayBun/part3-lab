@@ -1,0 +1,30 @@
+<h2>
+    <%= title %>
+</h2>
+
+<form action="/products/<%= product._id %>/update" method="post">
+    <div class="mb-3">
+        <label for="name" class="form-label">Tên sản phẩm</label>
+        <input type="text" class="form-control" id="name" name="name" value="<%= product.name %>" required>
+    </div>
+    <div class="mb-3">
+        <label for="price" class="form-label">Giá</label>
+        <input type="number" class="form-control" id="price" name="price" value="<%= product.price %>" required>
+    </div>
+    <div class="mb-3">
+        <label for="quantity" class="form-label">Số lượng</label>
+        <input type="number" class="form-control" id="quantity" name="quantity" value="<%= product.quantity %>" required>
+    </div>
+    <div class="mb-3">
+        <label for="supplier" class="form-label">Nhà cung cấp</label>
+        <select class="form-select" name="supplier" id="supplier" required>
+      <% if (suppliers && suppliers.length) { %>
+        <% suppliers.forEach(s => { %>
+          <option value="<%= s._id %>" <%= product.supplier && product.supplier.toString() === s._id.toString() ? 'selected' : '' %>><%= s.name %></option>
+        <% }) %>
+      <% } %>
+    </select>
+    </div>
+    <button class="btn btn-primary" type="submit">Cập nhật</button>
+    <a href="/products" class="btn btn-secondary">Hủy</a>
+</form>

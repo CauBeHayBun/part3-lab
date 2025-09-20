@@ -1,0 +1,26 @@
+<h2>
+    <%= title %>
+</h2>
+
+<% if (error) { %>
+    <div class="alert alert-danger">
+        <%= error %>
+    </div>
+    <% } %>
+
+        <form action="/suppliers/<%= supplier._id %>/update" method="post">
+            <div class="mb-3">
+                <label for="name" class="form-label">Tên nhà cung cấp</label>
+                <input type="text" class="form-control" id="name" name="name" value="<%= supplier.name %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Địa chỉ</label>
+                <input type="text" class="form-control" id="address" name="address" value="<%= supplier.address %>">
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Điện thoại</label>
+                <input type="text" class="form-control" id="phone" name="phone" value="<%= supplier.phone %>">
+            </div>
+            <button type="submit" class="btn btn-primary">Cập nhật</button>
+            <a href="/suppliers" class="btn btn-secondary">Hủy</a>
+        </form>
